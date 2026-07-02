@@ -1,0 +1,55 @@
+# generated JSON payloads
+*.json
+!/docs/*.json
+
+# generated output dirs
+mock_json_backup_*/
+mock_json_backup_entity_links_*/
+wb_yaml_field_dictionary/
+
+# logs
+*.log
+web_server.log
+
+# python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# env / secrets
+.env
+*.env
+.env.*
+
+# editor/system
+.vscode/
+.vscode-server/
+.DS_Store
+EOFcat > /opt/wb_mock_api/.gitignore <<'EOF'
+# generated JSON payloads
+*.json
+!/docs/*.json
+
+# generated output dirs
+mock_json_backup_*/
+mock_json_backup_entity_links_*/
+wb_yaml_field_dictionary/
+
+# logs
+*.log
+web_server.log
+
+# python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# env / secrets
+.env
+*.env
+.env.*
+
+# editor/system
+.vscode/
+.vscode-server/
+.DS_Store
