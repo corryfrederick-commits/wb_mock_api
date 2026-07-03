@@ -53,3 +53,7 @@ __pycache__/
 .vscode/
 .vscode-server/
 .DS_Store
+
+# local runtime
+runtime/
+logs/
