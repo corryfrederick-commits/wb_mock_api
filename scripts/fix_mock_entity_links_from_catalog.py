@@ -9,7 +9,6 @@ random.seed(20260702)
 
 BASE_DIRS = [
     Path("/var/www/html"),
-    Path("/root"),
 ]
 
 TARGET_FILES = [
