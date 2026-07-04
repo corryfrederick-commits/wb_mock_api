@@ -1,5 +1,6 @@
 import json
 import random
+import os
 import uuid
 from copy import deepcopy
 from datetime import datetime, timedelta, timezone
@@ -118,8 +119,29 @@ def walk_dicts(value):
             yield from walk_dicts(item)
 
 
+
+def mock_now_utc() -> datetime:
+    raw = os.getenv("MOCK_DATE")
+    if not raw:
+        return datetime.now(timezone.utc)
+
+    raw = raw.strip().replace("Z", "+00:00")
+    base = datetime.fromisoformat(raw)
+
+    if base.tzinfo is None:
+        base = base.replace(tzinfo=timezone.utc)
+    else:
+        base = base.astimezone(timezone.utc)
+
+    # Если передали просто дату YYYY-MM-DD, считаем её концом дня.
+    if "T" not in raw and len(raw) == 10:
+        base = base.replace(hour=23, minute=59, second=59, microsecond=0)
+
+    return base
+
+
 def recent_iso(offset_days=60):
-    dt = datetime.now(timezone.utc) - timedelta(
+    dt = mock_now_utc() - timedelta(
         days=random.randint(0, offset_days),
         hours=random.randint(0, 23),
         minutes=random.randint(0, 59),
